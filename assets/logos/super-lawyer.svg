@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 48" role="img" aria-labelledby="superTitle superDesc">
+  <title id="superTitle">Super Lawyers</title>
+  <desc id="superDesc">Stylized Super Lawyers recognition badge</desc>
+  <rect width="170" height="48" rx="10" fill="#1e293b"/>
+  <path d="M18 34h24l-12-20z" fill="#f97316"/>
+  <path d="M22 32h16l-8-13z" fill="#facc15"/>
+  <text x="70" y="26" fill="#f8fafc" font-family="'Segoe UI',Arial,sans-serif" font-size="18" font-weight="700">Super</text>
+  <text x="70" y="38" fill="#cbd5f5" font-family="'Segoe UI',Arial,sans-serif" font-size="14" font-weight="600">Lawyers</text>
+</svg>
