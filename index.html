@@ -71,7 +71,10 @@
 .tick li{margin:10px 0;color:#111827;font-weight:700}
 $1/* removed custom checkmark for reliability on all devices */
 
+    .logo-track{display:flex;align-items:center;gap:28px;min-width:max-content;padding:6px 0;will-change:transform}
+    .logo-track img{flex:0 0 auto;filter:drop-shadow(0 6px 10px rgba(15,23,42,.12));background:#fff;border-radius:12px;padding:6px 12px}
 
+    
     /* FORM / SURVEY */
     label{font-size:12px;color:#111827;font-weight:800}
     input,select,textarea{width:100%;padding:14px;border:1px solid #cfcfcf;border-radius:12px;background:#fff}
@@ -145,17 +148,13 @@ $1/* removed custom checkmark for reliability on all devices */
   <!-- TRUST LOGO CAROUSEL -->
   <section class="wrap section" aria-label="Memberships and ratings">
     <div class="panel pad" style="overflow:hidden">
-      <div class="meta" style="margin-bottom:8px">Memberships & Ratings (logos are property of their owners; not a guarantee or endorsement)</div>
+      <div class="meta" style="margin-bottom:8px">(Memberships & Ratings — logos are property of their owners; not a guarantee or endorsement)</div>
       <div class="logo-track" id="logo-track" aria-live="polite">
-        <img loading="lazy" width="180" height="48" src="/assets/logos/martindale-client-champion.png" alt="Martindale‑Hubbell Client Champion" />
-        <img loading="lazy" width="140" height="48" src="/assets/logos/avvo-rated.png" alt="Avvo Rated" />
-        <img loading="lazy" width="180" height="48" src="/assets/logos/state-bar-ga.png" alt="State Bar of Georgia" />
-        <img loading="lazy" width="180" height="48" src="/assets/logos/gtla.png" alt="Georgia Trial Lawyers Association" />
-        <img loading="lazy" width="170" height="48" src="/assets/logos/super-lawyers.png" alt="Super Lawyers" />
-      </div>
-      <div class="logo-controls" style="display:flex;gap:10px;justify-content:flex-end;margin-top:8px">
-        <button class="btn" id="logo-pause" aria-pressed="false">Pause</button>
-        <button class="btn" id="logo-play" aria-pressed="false">Play</button>
+        <img loading="lazy" width="180" height="48" src="assets/logos/martindale-client-champion.svg" alt="Martindale‑Hubbell Client Champion" />
+        <img loading="lazy" width="140" height="48" src="assets/logos/avvo-rated.svg" alt="Avvo Rated" />
+        <img loading="lazy" width="180" height="48" src="assets/logos/state-bar-ga.svg" alt="State Bar of Georgia" />
+        <img loading="lazy" width="180" height="48" src="assets/logos/gtla.svg" alt="Georgia Trial Lawyers Association" />
+        <img loading="lazy" width="170" height="48" src="assets/logos/super-lawyers.svg" alt="Super Lawyers" />
       </div>
     </div>
   </section>
@@ -460,7 +459,7 @@ $1/* removed custom checkmark for reliability on all devices */
         if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth'}); }
       }));
 
-      // Logo carousel: simple continuous scroll with pause/play and swipe
+      // Logo carousel: simple continuous scroll with pointer pause/resume
       const track = $('#logo-track');
       if(track){
         // Duplicate children for seamless loop
@@ -468,8 +467,6 @@ $1/* removed custom checkmark for reliability on all devices */
         let pos = 0, running = true, speed = 0.6; // px per frame
         function step(){ if(!running) return; pos = (pos + speed) % track.scrollWidth; track.style.transform = `translateX(${-pos}px)`; requestAnimationFrame(step); }
         requestAnimationFrame(step);
-        $('#logo-pause').addEventListener('click',()=>{ running=false; });
-        $('#logo-play').addEventListener('click',()=>{ if(!running){ running=true; requestAnimationFrame(step);} });
         let startX=null; track.addEventListener('pointerdown',e=>{ startX=e.clientX; running=false; track.setPointerCapture(e.pointerId); });
         track.addEventListener('pointermove',e=>{ if(startX!=null){ pos = (pos - (e.clientX-startX)) % track.scrollWidth; startX=e.clientX; track.style.transform = `translateX(${-pos}px)`; }});
         track.addEventListener('pointerup',()=>{ startX=null; running=true; requestAnimationFrame(step); });
