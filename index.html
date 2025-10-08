@@ -67,9 +67,10 @@
     .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
     .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
     @media (max-width:900px){ .grid2,.grid3{grid-template-columns:1fr} }
-    .tick{list-style:none;padding-left:0}
-    .tick li{position:relative;padding-left:28px;margin:12px 0;color:#111827;font-weight:700}
-    .tick li::before{content:'¹3';position:absolute;left:0;top:0;color:var(--gold);font-weight:900}
+    .tick{list-style:disc;padding-left:22px;margin:0}
+.tick li{margin:10px 0;color:#111827;font-weight:700}
+$1/* removed custom checkmark for reliability on all devices */
+
 
     /* FORM / SURVEY */
     label{font-size:12px;color:#111827;font-weight:800}
@@ -114,9 +115,9 @@
     <div class="wrap hero-inner">
       <div class="hero-grid">
         <div>
-          <span class="tag">Georgia • Criminal Defense • Since 1980</span>
-          <h1>45 Years of Georgia Criminal, DUI & BUI Defense — Discreet, Unshakable, Effective.</h1>
-          <p class="lede">From OCGA 40‑6‑391 DUI and BUI matters to complex felony drug allegations, our seasoned trial team brings calm strategy and precise motion practice to every case—statewide.</p>
+          <span class="tag">Woodstock • Cherokee County • Since 1980</span>
+          <h1>Georgia Criminal Defense & DUI — 45 Years of Steady, Effective Advocacy.</h1>
+          <p class="lede">Focused on <strong>Criminal Law</strong> and <strong>DUI/Traffic</strong> defense in <strong>Woodstock</strong>, <strong>Cherokee County</strong>, and Northwestern Georgia courts. Clear guidance, respectful communication, and courtroom‑ready preparation.</p>
           <div class="ribbon" aria-label="Highlights">
             <span class="rib">24/7 Case Line</span>
             <span class="rib">Georgia‑Licensed Attorneys</span>
@@ -124,14 +125,14 @@
             <span class="rib">Se Habla Español</span>
           </div>
           <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
-            <a class="btn gold" href="#consult">Start Your Case Review</a>
-            <a class="btn ghost" href="tel:+14045550133" aria-label="Call the firm">Click to Call (404) 555‑0133</a>
+            <a class="btn gold" href="#consult">Start Your Case Survey</a>
+            <a class="btn ghost" href="tel:+17704270141" aria-label="Call the firm">Click to Call (770) 427‑0141</a>
           </div>
         </div>
         <aside class="panel pad aside" aria-label="Immediate legal guidance" style="color:#0b1220">
           <h2 style="margin-top:0;font-weight:900">Immediate Legal Guidance</h2>
           <ul class="tick" style="font-size:16px;line-height:1.4">
-            <li>ALS (30‑Day) license hearing strategy</li>
+            <li>DUI (OCGA 40‑6‑391): ALS (30‑Day) license strategy</li>
             <li>Field, breath & blood test challenges</li>
             <li>Fourth Amendment & suppression motions</li>
           </ul>
@@ -141,37 +142,157 @@
     </div>
   </section>
 
-  <!-- PRACTICE -->
+  <!-- TRUST LOGO CAROUSEL -->
+  <section class="wrap section" aria-label="Memberships and ratings">
+    <div class="panel pad" style="overflow:hidden">
+      <div class="meta" style="margin-bottom:8px">Memberships & Ratings (logos are property of their owners; not a guarantee or endorsement)</div>
+      <div class="logo-track" id="logo-track" aria-live="polite">
+        <img loading="lazy" width="180" height="48" src="/assets/logos/martindale-client-champion.png" alt="Martindale‑Hubbell Client Champion" />
+        <img loading="lazy" width="140" height="48" src="/assets/logos/avvo-rated.png" alt="Avvo Rated" />
+        <img loading="lazy" width="180" height="48" src="/assets/logos/state-bar-ga.png" alt="State Bar of Georgia" />
+        <img loading="lazy" width="180" height="48" src="/assets/logos/gtla.png" alt="Georgia Trial Lawyers Association" />
+        <img loading="lazy" width="170" height="48" src="/assets/logos/super-lawyers.png" alt="Super Lawyers" />
+      </div>
+      <div class="logo-controls" style="display:flex;gap:10px;justify-content:flex-end;margin-top:8px">
+        <button class="btn" id="logo-pause" aria-pressed="false">Pause</button>
+        <button class="btn" id="logo-play" aria-pressed="false">Play</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRACTICE (Criminal & DUI first) -->
   <section id="practice" class="wrap section">
     <div class="grid3">
       <div class="panel pad">
-        <h3>Felony Drug Defense</h3>
-        <p>Possession, intent, trafficking, search & seizure, warrants, lab protocols, and chain of custody.</p>
+        <h3>Criminal Defense ⚖️</h3>
+        <p>Felonies & misdemeanors, warrants, probation issues, motions practice, and trial preparation.</p>
         <ul class="tick">
-          <li>Suppression & evidentiary motions</li>
-          <li>Treatment‑oriented resolutions where appropriate</li>
-          <li>Jury‑ready investigation & experts</li>
-        </ul>
-      </div>
-      <div class="panel pad">
-        <h3>DUI Defense (OCGA 40‑6‑391)</h3>
-        <p>ALS deadlines, refusals, field tests, breath/blood analysis, under‑21 & CDL considerations.</p>
-        <ul class="tick">
-          <li>ALS hearing filing & defense</li>
-          <li>Testing protocol & device challenges</li>
+          <li>Arrests, arraignments, bond & hearings</li>
+          <li>Search, seizure, suppression</li>
           <li>Negotiation and trial strategy</li>
         </ul>
+        <details style="margin-top:10px">
+          <summary class="btn" style="display:inline-block">Learn more</summary>
+          <div class="meta" style="margin-top:10px;text-wrap:pretty">
+            <p>Facing a criminal charge can feel overwhelming. We help you understand the charge, the possible penalties, and the path forward. We explain court dates and what to expect at each step.</p>
+            <p>We review how the stop or investigation happened. If law enforcement searched your home, car, or phone, we look closely at warrants and consent. When evidence was taken, we examine chain of custody and how it was tested.</p>
+            <p>Many cases resolve without trial. Some go to trial. We prepare for both by filing motions, interviewing witnesses, and exploring treatment‑based or negotiated outcomes where appropriate. No attorney can promise a result; every case is different.</p>
+            <p><strong>Georgia note:</strong> Local rules and judges vary by county. We appear in Woodstock, Cherokee County, and nearby courts as permitted.</p>
+          </div>
+        </details>
       </div>
       <div class="panel pad">
-        <h3>BUI Defense (Boating)</h3>
-        <p>Marine stops, on‑water testing, accidents, and boating privilege issues across Georgia.</p>
+        <h3>DUI & Traffic Defense 🚧</h3>
+        <p>OCGA 40‑6‑391 DUI, refusals, field tests, CDL/under‑21, and license timelines.</p>
         <ul class="tick">
-          <li>Probable cause on waterways</li>
-          <li>Calibration & procedure scrutiny</li>
-          <li>Insurance & injury overlays</li>
+          <li>ALS hearing filing & defense</li>
+          <li>Breath/blood protocol challenges</li>
+          <li>Court preparation & representation</li>
         </ul>
+        <details style="margin-top:10px">
+          <summary class="btn" style="display:inline-block">Learn more</summary>
+          <div class="meta" style="margin-top:10px;text-wrap:pretty">
+            <p>After a Georgia DUI arrest, time matters. You may have a short deadline to protect driving privileges. We help you request the right hearing and track dates so you do not miss them.</p>
+            <p>We review the stop, field tests, and implied‑consent notice. For breath or blood tests, we examine maintenance records and collection procedures. Refusal cases have their own rules; we explain your options in plain language.</p>
+            <p>Many DUI cases resolve through negotiation, programs, or reduced charges depending on facts and history. Some cases go to trial. We prepare for both paths and keep you informed. Past results do not predict future outcomes.</p>
+            <p><strong>Local focus:</strong> Woodstock, Cherokee County, and neighboring courts in Northwestern Georgia.</p>
+          </div>
+        </details>
+      </div>
+      <div class="panel pad">
+        <h3>Automobile Accidents 🚗</h3>
+        <p>Injury claims, medical coordination, insurance negotiations, and litigation when needed.</p>
+        <details style="margin-top:10px">
+          <summary class="btn" style="display:inline-block">Learn more</summary>
+          <div class="meta" style="margin-top:10px;text-wrap:pretty">
+            <p>After a crash, we help organize medical care and insurance communication so you can focus on recovery. We explain fault, coverage, and typical timelines.</p>
+            <p>We collect records, photos, and witness statements. When helpful, we work with experts to understand injuries and impact.</p>
+            <p>Some cases settle. Others require filing suit. We discuss risks and benefits before any decision. No lawyer can guarantee a settlement or verdict.</p>
+            <p><strong>Served areas:</strong> Woodstock, Cherokee County, and nearby communities.</p>
+          </div>
+        </details>
+      </div>
+      <div class="panel pad">
+        <h3>Semi‑Truck Accidents 🚚</h3>
+        <p>Commercial carrier rules, preservation letters, experts, and serious‑injury litigation.</p>
+        <details style="margin-top:10px">
+          <summary class="btn" style="display:inline-block">Learn more</summary>
+          <div class="meta" style="margin-top:10px;text-wrap:pretty">
+            <p>Truck cases often involve federal and state safety rules. We act quickly to preserve evidence such as driver logs, maintenance records, and onboard data.</p>
+            <p>We coordinate with medical providers and specialists to document injuries. When responsibility is disputed, we work with reconstruction experts.</p>
+            <p>Outcomes depend on facts, coverage, and law. We provide honest guidance at each step.</p>
+            <p><strong>Local courts:</strong> Cherokee County and surrounding venues as permitted.</p>
+          </div>
+        </details>
+      </div>
+      <div class="panel pad">
+        <h3>Drug Possession ⛓️</h3>
+        <p>Possession, intent, trafficking; search & seizure; diversion or treatment options where appropriate.</p>
+        <details style="margin-top:10px">
+          <summary class="btn" style="display:inline-block">Learn more</summary>
+          <div class="meta" style="margin-top:10px;text-wrap:pretty">
+            <p>Drug charges range from possession to trafficking. Penalties vary based on the substance, amount, and prior history.</p>
+            <p>We examine stops, warrants, and how evidence was handled and tested. If the search or seizure was unlawful, we seek to suppress the evidence.</p>
+            <p>In some cases, treatment or diversion programs may be options. We discuss what may fit your situation. No promise of outcome is made.</p>
+            <p><strong>Counties served:</strong> Cherokee and neighboring counties.</p>
+          </div>
+        </details>
+      </div>
+      <div class="panel pad">
+        <h3>Child Custody 👨‍👧 & Support 👨‍👧‍👦</h3>
+        <p>Custody, parenting plans, and support matters with clear communication and steady advocacy.</p>
+        <details style="margin-top:10px">
+          <summary class="btn" style="display:inline-block">Learn more</summary>
+          <div class="meta" style="margin-top:10px;text-wrap:pretty">
+            <p>We help parents create plans that focus on the child’s needs. We explain how Georgia courts look at best‑interest factors.</p>
+            <p>Support is based on guidelines and financial information. We help gather documents and present your position clearly.</p>
+            <p>Many families resolve issues through agreement or mediation. Some require hearings. We prepare for both and keep you informed.</p>
+            <p><strong>Note:</strong> This information is general. It is not legal advice for your situation.</p>
+          </div>
+        </details>
+      </div>
+      <div class="panel pad">
+        <h3>Divorce & Family Law 💍✖️</h3>
+        <p>Contested/uncontested divorce, property division, and mediation‑first approach where appropriate.</p>
+        <details style="margin-top:10px">
+          <summary class="btn" style="display:inline-block">Learn more</summary>
+          <div class="meta" style="margin-top:10px;text-wrap:pretty">
+            <p>We explain the process, timelines, and choices so you can make informed decisions. We discuss property, debts, support, and parenting plans.</p>
+            <p>When families can work together, mediation may reduce stress and cost. If court is needed, we prepare filings and attend hearings with you.</p>
+            <p>No lawyer can guarantee a result. We provide steady guidance grounded in Georgia law.</p>
+            <p><strong>Local focus:</strong> Woodstock and surrounding communities.</p>
+          </div>
+        </details>
+      </div>
+      <div class="panel pad">
+        <h3>Guardian ad Litem 🛡️</h3>
+        <p>Independent assessments focused on the best interests of a child, when appointed.</p>
+        <details style="margin-top:10px">
+          <summary class="btn" style="display:inline-block">Learn more</summary>
+          <div class="meta" style="margin-top:10px;text-wrap:pretty">
+            <p>When appointed by the court, a guardian ad litem investigates facts and makes recommendations about a child’s best interests.</p>
+            <p>We follow court orders and ethical rules. We interview, review records, and prepare reports as required.</p>
+            <p>Parties can ask questions and provide information through proper channels. The court decides the outcome.</p>
+            <p><strong>Disclaimer:</strong> Appointment and duties are controlled by the court; this is general information only.</p>
+          </div>
+        </details>
+      </div>
+      <div class="panel pad">
+        <h3>Mediation & Arbitration 🤝</h3>
+        <p>Neutral facilitation and alternative dispute resolution options when suitable.</p>
+        <details style="margin-top:10px">
+          <summary class="btn" style="display:inline-block">Learn more</summary>
+          <div class="meta" style="margin-top:10px;text-wrap:pretty">
+            <p>Mediation helps parties find common ground with a neutral guide. It can be faster and less costly than court.</p>
+            <p>Arbitration is a private process where a neutral arbitrator decides the case. It is more formal than mediation but often quicker than trial.</p>
+            <p>ADR is not right for every dispute. We discuss pros and cons based on your goals and the law.</p>
+            <p><strong>Note:</strong> Outcomes vary by facts, agreements, and applicable rules.</p>
+          </div>
+        </details>
       </div>
     </div>
+
+    <p class="meta" style="margin-top:14px">Serving Woodstock, Cherokee County, and Northwestern Georgia — including Canton, Holly Springs, Acworth, Kennesaw, and neighboring courts as permitted.</p>
   </section>
 
   <!-- ABOUT / CREDIBILITY -->
@@ -227,10 +348,11 @@
             <div class="step-title">What type of service are you looking for?</div>
             <select name="service" id="service" required>
               <option value="">Select…</option>
+              <option value="Criminal Defense">Criminal Defense</option>
               <option value="DUI (OCGA 40-6-391)">DUI (OCGA 40‑6‑391)</option>
-              <option value="BUI (Boating Under the Influence)">BUI (Boating Under the Influence)</option>
-              <option value="Felony Drug Defense">Felony Drug Defense</option>
-              <option value="Criminal Defense (Other)">Criminal Defense (Other)</option>
+              <option value="Automobile Accidents">Automobile Accidents</option>
+              <option value="Family Law / Divorce">Family Law / Divorce</option>
+              <option value="Other">Other</option>
             </select>
             <div style="display:flex;justify-content:space-between;margin-top:14px">
               <button type="button" class="btn" id="back-2">Back</button>
@@ -260,7 +382,7 @@
                 <label for="county">Georgia County</label>
                 <select id="county" name="county" required>
                   <option value="">Select…</option>
-                  <option>Fulton</option><option>DeKalb</option><option>Cobb</option><option>Gwinnett</option><option>Chatham</option><option>Richmond</option><option>Clarke</option><option>Hall</option><option>Bibb</option><option>All Counties</option>
+                  <option>Cherokee</option><option>Cobb</option><option>Fulton</option><option>Bartow</option><option>Forsyth</option><option>Pickens</option><option>All Counties</option>
                 </select>
               </div>
             </div>
@@ -278,7 +400,7 @@
           <div class="step" data-step="4" hidden>
             <h3 class="step-title">Thank you — we’ll reach out shortly.</h3>
             <p class="meta">If this is urgent, call us now. Our 24/7 line connects you directly to intake.</p>
-            <a class="btn gold full" href="tel:+14045550133">Click to Call (404) 555‑0133</a>
+            <a class="btn gold full" href="tel:+17704270141">Click to Call (770) 427‑0141</a>
             <p class="meta" style="margin-top:10px">You’ll also receive a confirmation SMS or email if provided.</p>
           </div>
 
@@ -287,15 +409,15 @@
       </div>
 
       <div class="panel pad aside">
-        <h3>Serving All of Georgia</h3>
-        <p>Atlanta • Savannah • Augusta • Athens • Macon • Columbus • Statewide.</p>
+        <h3>Serving All of Northwestern Georgia</h3>
+        <p>Woodstock • Cherokee County • Canton • Holly Springs • Acworth • Kennesaw • Nearby courts as permitted.</p>
         <h3>Immediate Steps After an Arrest</h3>
         <ul class="tick">
           <li>Act within ALS timelines to protect driving</li>
           <li>Document details of the stop/testing</li>
           <li>Speak to counsel before discussing your case</li>
         </ul>
-        <a class="btn gold full" href="tel:+14045550133" style="margin-top:10px">Click to Call (404) 555‑0133</a>
+        <a class="btn gold full" href="tel:+17704270141" style="margin-top:10px">Click to Call (770) 427‑0141</a>
       </div>
     </div>
   </section>
@@ -306,7 +428,7 @@
   <!-- FOOTER -->
   <footer role="contentinfo">
     <div class="wrap">
-      <strong>Langford, Ellis & Associates</strong> • 123 Peachtree St NE, Suite 1200, Atlanta, GA 30303 • <a href="tel:+14045550133">(404) 555‑0133</a>
+      <strong>Langford, Ellis & Associates</strong> • 123 Peachtree St NE, Suite 1200, Atlanta, GA 30303 • <a href="tel:+17704270141">(770) 427‑0141</a>
       <small class="disclaimer">Attorney Advertising. Information only; not legal advice. Viewing this page does not create an attorney‑client relationship. Past results do not guarantee a similar outcome. Responsible attorney: Lead Attorney Name, admitted in Georgia. © <span id="year"></span> Langford, Ellis & Associates.</small>
     </div>
   </footer>
@@ -318,9 +440,9 @@
     "name":"Langford, Ellis & Associates",
     "url":"https://lea-law.com/",
     "areaServed":{"@type":"State","name":"Georgia"},
-    "address":{"@type":"PostalAddress","addressRegion":"GA","addressCountry":"US"},
-    "telephone":"+1-404-555-0133",
-    "serviceType":["Felony Drug Defense","DUI Defense","BUI Defense"]
+    "address":{"@type":"PostalAddress","addressLocality":"Woodstock","addressRegion":"GA","addressCountry":"US"},
+    "telephone":"+1-770-427-0141",
+    "serviceType":["Criminal Defense","DUI Defense","Family Law","Personal Injury"]
   }</script>
 
   <!-- Minimal JS (no frameworks) -->
@@ -338,6 +460,21 @@
         if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth'}); }
       }));
 
+      // Logo carousel: simple continuous scroll with pause/play and swipe
+      const track = $('#logo-track');
+      if(track){
+        // Duplicate children for seamless loop
+        track.innerHTML = track.innerHTML + track.innerHTML;
+        let pos = 0, running = true, speed = 0.6; // px per frame
+        function step(){ if(!running) return; pos = (pos + speed) % track.scrollWidth; track.style.transform = `translateX(${-pos}px)`; requestAnimationFrame(step); }
+        requestAnimationFrame(step);
+        $('#logo-pause').addEventListener('click',()=>{ running=false; });
+        $('#logo-play').addEventListener('click',()=>{ if(!running){ running=true; requestAnimationFrame(step);} });
+        let startX=null; track.addEventListener('pointerdown',e=>{ startX=e.clientX; running=false; track.setPointerCapture(e.pointerId); });
+        track.addEventListener('pointermove',e=>{ if(startX!=null){ pos = (pos - (e.clientX-startX)) % track.scrollWidth; startX=e.clientX; track.style.transform = `translateX(${-pos}px)`; }});
+        track.addEventListener('pointerup',()=>{ startX=null; running=true; requestAnimationFrame(step); });
+      }
+
       // Survey state
       const form = $('#survey');
       const progress = $('#progress-bar');
@@ -350,7 +487,7 @@
         progress.parentElement.setAttribute('aria-valuenow', pct);
       };
 
-      // Step 1 selection with clear visual state and ARIA updates
+      // Step 1 selection
       const contacted = $('#contacted');
       const choices = $$('.step[data-step="1"] .choice');
       const setSelected = (btn)=>{
@@ -363,15 +500,6 @@
       };
       choices.forEach(btn=>{
         btn.addEventListener('click',()=>{ contacted.value = btn.dataset.value; setSelected(btn); });
-        btn.addEventListener('keydown',(e)=>{
-          if(e.key==='Enter' || e.key===' '){ e.preventDefault(); btn.click(); }
-          if(e.key==='ArrowRight' || e.key==='ArrowLeft'){
-            e.preventDefault();
-            const idx = choices.indexOf(btn);
-            const next = e.key==='ArrowRight' ? (idx+1)%choices.length : (idx-1+choices.length)%choices.length;
-            choices[next].focus();
-          }
-        });
       });
       $('#continue-1').addEventListener('click',()=>{
         if(!contacted.value){ alert('Please choose Yes or No.'); return; }
