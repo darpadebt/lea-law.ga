@@ -36,11 +36,18 @@
     .name{font-weight:800;font-size:18px}
     .toplinks a{color:#e5e7eb;margin-left:18px}
     .toplinks a:hover{color:#fef3c7}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 16px;border-radius:14px;border:1px solid #e4e4e7;cursor:pointer;font-weight:800}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 16px;border-radius:14px;border:1px solid #e4e4e7;cursor:pointer;font-weight:800;user-select:none}
     .btn.gold{background:linear-gradient(180deg,#caa64a,#9a7624);border-color:#9a7624;color:#0b1220;box-shadow:0 6px 22px rgba(154,118,36,.35)}
     .btn.gold:hover{filter:saturate(1.05) brightness(1.02)}
     .btn.ghost{background:transparent;border-color:#6b7280;color:#e2e8f0}
     .btn.full{width:100%}
+
+    /* Selected state for choices (Yes/No) */
+    .choice[aria-pressed="true"], .choice.selected {
+      outline:3px solid var(--ring);
+      box-shadow:inset 0 0 0 2px #ffffff, 0 8px 26px rgba(154,118,36,.35);
+      filter:saturate(1.06) brightness(1.04);
+    }
 
     /* HERO */
     .hero{background:linear-gradient(180deg,#0b1220 0%,#0f172a 80%);color:#e5e7eb}
@@ -62,7 +69,7 @@
     @media (max-width:900px){ .grid2,.grid3{grid-template-columns:1fr} }
     .tick{list-style:none;padding-left:0}
     .tick li{position:relative;padding-left:28px;margin:12px 0;color:#111827;font-weight:700}
-    .tick li::before{content:'\2713';position:absolute;left:0;top:0;color:var(--gold);font-weight:900}
+    .tick li::before{content:'¹3';position:absolute;left:0;top:0;color:var(--gold);font-weight:900}
 
     /* FORM / SURVEY */
     label{font-size:12px;color:#111827;font-weight:800}
@@ -206,9 +213,9 @@
           <!-- STEP 1 -->
           <div class="step" data-step="1">
             <div class="step-title">Have you contacted a lawyer yet?</div>
-            <div class="choices">
-              <button type="button" class="btn gold choice" data-value="Yes">Yes</button>
-              <button type="button" class="btn gold choice" data-value="No">No</button>
+            <div class="choices" role="radiogroup" aria-label="Contacted a lawyer">
+              <button type="button" class="btn gold choice" role="radio" aria-checked="false" aria-pressed="false" data-value="Yes">Yes</button>
+              <button type="button" class="btn gold choice" role="radio" aria-checked="false" aria-pressed="false" data-value="No">No</button>
             </div>
             <div style="display:flex;justify-content:flex-end;margin-top:14px">
               <button type="button" class="btn gold" id="continue-1">Continue</button>
@@ -343,10 +350,28 @@
         progress.parentElement.setAttribute('aria-valuenow', pct);
       };
 
-      // Step 1
+      // Step 1 selection with clear visual state and ARIA updates
       const contacted = $('#contacted');
-      $$('.step[data-step="1"] .choice').forEach(btn=>{
-        btn.addEventListener('click',()=>{ contacted.value = btn.dataset.value; });
+      const choices = $$('.step[data-step="1"] .choice');
+      const setSelected = (btn)=>{
+        choices.forEach(b=>{
+          b.classList.toggle('selected', b===btn);
+          b.setAttribute('aria-pressed', b===btn ? 'true' : 'false');
+          b.setAttribute('aria-checked', b===btn ? 'true' : 'false');
+          b.tabIndex = b===btn ? 0 : -1;
+        });
+      };
+      choices.forEach(btn=>{
+        btn.addEventListener('click',()=>{ contacted.value = btn.dataset.value; setSelected(btn); });
+        btn.addEventListener('keydown',(e)=>{
+          if(e.key==='Enter' || e.key===' '){ e.preventDefault(); btn.click(); }
+          if(e.key==='ArrowRight' || e.key==='ArrowLeft'){
+            e.preventDefault();
+            const idx = choices.indexOf(btn);
+            const next = e.key==='ArrowRight' ? (idx+1)%choices.length : (idx-1+choices.length)%choices.length;
+            choices[next].focus();
+          }
+        });
       });
       $('#continue-1').addEventListener('click',()=>{
         if(!contacted.value){ alert('Please choose Yes or No.'); return; }
