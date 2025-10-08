@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120" role="img" aria-labelledby="title desc">
+  <title id="title">Lea Law script logo</title>
+  <desc id="desc">Gold script word Lea with small-caps Lea Law tagline.</desc>
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f5d485" />
+      <stop offset="1" stop-color="#b1872c" />
+    </linearGradient>
+  </defs>
+  <rect width="320" height="120" fill="none" rx="16" />
+  <g fill="url(#gold)">
+    <text x="18" y="76" font-size="78" font-weight="500"
+          font-family="'Great Vibes','Brush Script MT','Lucida Handwriting','Segoe Script',cursive">
+      Lea
+    </text>
+  </g>
+  <text x="20" y="108" font-size="20" letter-spacing="0.22em"
+        font-family="'Libre Baskerville','Times New Roman',serif"
+        fill="#0b1220">
+    LAW FIRM
+  </text>
+</svg>
