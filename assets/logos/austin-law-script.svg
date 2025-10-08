@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120" role="img" aria-labelledby="title desc">
+  <title id="title">Austin Law Group, P.C. logotype</title>
+  <desc id="desc">Script logo for Austin Law Group, P.C. with gold lettering and serif tagline.</desc>
+  <defs>
+    <linearGradient id="ink" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d4af37" />
+      <stop offset="1" stop-color="#8a6c1d" />
+    </linearGradient>
+  </defs>
+  <rect width="320" height="120" fill="none" rx="12" />
+  <g fill="url(#ink)" stroke="url(#ink)">
+    <text x="16" y="70" font-size="72" font-weight="500"
+          font-family="'Great Vibes','Brush Script MT','Lucida Handwriting','Segoe Script',cursive">
+      Austin
+    </text>
+  </g>
+  <text x="20" y="102" font-size="20" letter-spacing="0.16em"
+        font-family="'Libre Baskerville','Times New Roman',serif"
+        fill="#0b1220">
+    LAW GROUP, P.C.
+  </text>
+</svg>
