@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 48" role="img" aria-labelledby="avvoTitle avvoDesc">
+  <title id="avvoTitle">Avvo Rated badge</title>
+  <desc id="avvoDesc">Stylized badge representing Avvo rated logo</desc>
+  <rect width="140" height="48" rx="10" fill="#0f172a"/>
+  <path d="M20 24a12 12 0 1124 0 12 12 0 01-24 0z" fill="#ef4444"/>
+  <path d="M40 24l12-12 12 12-12 12z" fill="#f97316" opacity=".9"/>
+  <text x="70" y="24" fill="#f8fafc" font-family="'Segoe UI',Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle">avvo</text>
+  <text x="70" y="38" fill="#cbd5f5" font-family="'Segoe UI',Arial,sans-serif" font-size="12" text-anchor="middle">RATED</text>
+</svg>
