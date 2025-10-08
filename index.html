@@ -462,16 +462,47 @@ $1/* removed custom checkmark for reliability on all devices */
       // Logo carousel: simple continuous scroll with pointer pause/resume
       const track = $('#logo-track');
       if(track){
-        // Duplicate children for seamless loop
-        track.innerHTML = track.innerHTML + track.innerHTML;
         let pos = 0, running = true, speed = 0.6; // px per frame
-        function step(){ if(!running) return; pos = (pos + speed) % track.scrollWidth; track.style.transform = `translateX(${-pos}px)`; requestAnimationFrame(step); }
-        requestAnimationFrame(step);
-        let startX=null; track.addEventListener('pointerdown',e=>{ startX=e.clientX; running=false; track.setPointerCapture(e.pointerId); });
-        track.addEventListener('pointermove',e=>{ if(startX!=null){ pos = (pos - (e.clientX-startX)) % track.scrollWidth; startX=e.clientX; track.style.transform = `translateX(${-pos}px)`; }});
-        track.addEventListener('pointerup',()=>{ startX=null; running=true; requestAnimationFrame(step); });
-      }
+        const style = getComputedStyle(track);
+        const gap = parseFloat(style.columnGap || style.gap || '0') || 0;
+        let firstEl = null;
+        let firstWidth = 0;
+        const measureFirst = ()=>{
+          firstEl = track.firstElementChild;
+          firstWidth = firstEl ? firstEl.getBoundingClientRect().width + gap : 0;
+        };
+        measureFirst();
+        function loop(){
+          if(running){
+            pos += speed;
+            if(firstEl && pos >= firstWidth){
+              track.appendChild(firstEl);
+              pos -= firstWidth;
+              measureFirst();
+            } else if(!firstEl){
+              measureFirst();
+            }
+            track.style.transform = `translateX(${-pos}px)`;
+          }
+          requestAnimationFrame(loop);
+        }
+        requestAnimationFrame(loop);
 
+        let startX=null;
+        track.addEventListener('pointerdown',e=>{ startX=e.clientX; running=false; track.setPointerCapture(e.pointerId); });
+        track.addEventListener('pointermove',e=>{
+          if(startX!=null){
+            const delta = e.clientX - startX;
+            pos = Math.max(0, pos - delta);
+            startX = e.clientX;
+            track.style.transform = `translateX(${-pos}px)`;
+          }
+        });
+        const resume = ()=>{ startX=null; running=true; };
+        track.addEventListener('pointerup', resume);
+        track.addEventListener('pointercancel', resume);
+      }
+      
       // Survey state
       const form = $('#survey');
       const progress = $('#progress-bar');
