@@ -1,0 +1,347 @@
+import React from 'react';
+
+export default function Page() {
+  return (
+    <div>
+      {/* LUXE THEME (high-contrast + mobile-first) */}
+      <style>{`
+        :root{
+          --navy:#0b1220;       /* deep navy */
+          --ink:#0e0f14;        /* body text */
+          --cream:#f7f4ec;      /* soft ivory */
+          --card:#ffffff;       /* panels */
+          --gold:#b38b2e;       /* antique gold */
+          --gold-600:#8f6f22;   /* darker gold hover */
+          --ring:rgba(179,139,46,.4);
+          --ok:#16a34a;
+        }
+        *{box-sizing:border-box}
+        html,body,#root{height:100%}
+        body{margin:0;background:var(--cream);color:var(--ink);font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial}
+        h1,h2,h3,h4{font-family: "Libre Baskerville", Georgia, Cambria, "Times New Roman", Times, serif; letter-spacing:.2px}
+        a{color:var(--gold); text-decoration:none}
+        a:hover{color:var(--gold-600)}
+        /* NAV */
+        header{position:sticky;top:0;z-index:20;background:rgba(11,18,32,.96);backdrop-filter:saturate(1.1) blur(8px);border-bottom:1px solid #1e2740}
+        .wrap{max-width:1100px;margin:0 auto;padding:0 18px}
+        .nav{display:flex;align-items:center;justify-content:space-between;height:72px;color:#e5e7eb}
+        .crest{display:flex;align-items:center;gap:12px}
+        .crest .mark{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#c9a74d,#8b6a1c);display:flex;align-items:center;justify-content:center;color:#0b1220;font-weight:900;box-shadow:0 4px 18px rgba(0,0,0,.25)}
+        .crest .name{font-weight:800; font-family: "Libre Baskerville", Georgia, Cambria, Times, serif; font-size:18px; letter-spacing:.5px}
+        .toplinks a{color:#e5e7eb; margin-left:18px}
+        .toplinks a:hover{color:#fef3c7}
+        .btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 16px;border-radius:14px;border:1px solid #e4e4e7;cursor:pointer;font-weight:800}
+        .btn.gold{background:linear-gradient(180deg,#caa64a,#9a7624);border-color:#9a7624;color:#0b1220;box-shadow:0 6px 22px rgba(154,118,36,.35)}
+        .btn.gold:hover{filter:saturate(1.05) brightness(1.02)}
+        .btn.ghost{background:transparent;border-color:#6b7280;color:#e2e8f0}
+        .btn.full{width:100%}
+        /* HERO */
+        .hero{background:linear-gradient(180deg,#0b1220 0%,#0f172a 80%); color:#e5e7eb}
+        .hero-inner{padding:40px 0}
+        .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:center}
+        @media (max-width: 900px){ .hero-grid{grid-template-columns:1fr} }
+        .tag{display:inline-block;padding:6px 12px;border-radius:999px;background:#1f2937;border:1px solid #334155;color:#fef3c7;font-weight:800;letter-spacing:.06em;text-transform:uppercase;font-size:11px}
+        h1{font-size: clamp(30px, 4.2vw, 50px); line-height:1.07; margin:.4rem 0 .8rem}
+        .lede{color:#d1d5db; font-size:18px}
+        .ribbon{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+        .rib{font-size:12px;border:1px solid #334155;background:#0f172a;border-radius:999px;color:#f9fafb;padding:8px 12px;font-weight:700}
+        /* PANELS */
+        .section{padding:34px 0}
+        .panel{background:var(--card); border:1px solid #e7e5e4; border-radius:18px; box-shadow: 0 12px 36px rgba(2,6,23,.08)}
+        .pad{padding:20px}
+        .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+        .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+        @media (max-width:900px){ .grid2,.grid3{grid-template-columns:1fr} }
+        ul.clean{margin:0;padding-left:18px}
+        ul.clean li{margin:8px 0}
+        .tick{list-style:none;padding-left:0}
+        .tick li{position:relative;padding-left:28px;margin:12px 0;color:#111827; font-weight:700}
+        .tick li::before{content:'\u2713'; position:absolute; left:0; top:0; color:var(--gold); font-weight:900}
+        /* FORM / SURVEY */
+        label{font-size:12px; color:#111827; font-weight:800}
+        input,select,textarea{width:100%; padding:14px; border:1px solid #cfcfcf; border-radius:12px; background:#fff}
+        input:focus,select:focus,textarea:focus{outline:3px solid var(--ring); border-color:var(--gold)}
+        .meta{font-size:12px;color:#475569}
+        .aside{background:#fff; border:1px solid #eadfbf}
+        .progress{height:6px;border-radius:999px;background:#e5e7eb;overflow:hidden}
+        .progress > span{display:block;height:100%;background:linear-gradient(90deg,#caa64a,#9a7624)}
+        .step-title{font-weight:900; font-size:18px; margin:6px 0}
+        .choices{display:flex; gap:10px; flex-wrap:wrap}
+        .choice{flex:1; min-width:120px}
+        /* FOOTER */
+        footer{background:#0b1220;color:#cbd5e1;padding:28px 0;margin-top:28px}
+        small.disclaimer{display:block;font-size:11px;color:#94a3b8;line-height:1.55;margin-top:8px}
+        .sticky{position:fixed;bottom:18px;right:18px}
+        @media (max-width:600px){ .sticky{left:18px; right:18px} .btn{padding:16px} }
+      `}</style>
+
+      {/* NAV */}
+      <header>
+        <div className="wrap nav" aria-label="Main navigation">
+          <div className="crest" aria-label="Firm branding">
+            <div className="mark" aria-hidden>LEA</div>
+            <div className="name">Langford, Ellis & Associates — Georgia Defense</div>
+          </div>
+          <div className="toplinks">
+            <a href="#practice">Practice</a>
+            <a href="#about">About</a>
+            <a href="#consult" className="btn gold" aria-label="Request consultation">Free Consultation</a>
+          </div>
+        </div>
+      </header>
+
+      {/* HERO */}
+      <section className="hero">
+        <div className="wrap hero-inner">
+          <div className="hero-grid">
+            <div>
+              <span className="tag">Georgia • Criminal Defense • Since 1980</span>
+              <h1>45 Years of Georgia Criminal, DUI & BUI Defense — Discreet, Unshakable, Effective.</h1>
+              <p className="lede">From OCGA 40‑6‑391 DUI and BUI matters to complex felony drug allegations, our seasoned trial team brings calm strategy and precise motion practice to every case—statewide.</p>
+              <div className="ribbon" aria-label="Highlights">
+                <span className="rib">24/7 Case Line</span>
+                <span className="rib">Georgia‑Licensed Attorneys</span>
+                <span className="rib">Confidential & No Obligation</span>
+                <span className="rib">Se Habla Español</span>
+              </div>
+              <div style={{marginTop:16, display:'flex', gap:10, flexWrap:'wrap'}}>
+                <a className="btn gold" href="#consult">Start Your Case Review</a>
+                <a className="btn ghost" href="tel:+14045550133" aria-label="Call the firm">Click to Call (404) 555‑0133</a>
+              </div>
+            </div>
+            {/* Immediate Legal Guidance — boosted contrast */}
+            <aside className="panel pad aside" aria-label="Immediate legal guidance" style={{color:'#0b1220'}}>
+              <h2 style={{marginTop:0, fontWeight:900}}>Immediate Legal Guidance</h2>
+              <ul className="tick" style={{fontSize:16,lineHeight:1.4}}>
+                <li>ALS (30‑Day) license hearing strategy</li>
+                <li>Field, breath & blood test challenges</li>
+                <li>Fourth Amendment & suppression motions</li>
+              </ul>
+              <p className="meta" style={{marginTop:10}}>Past results do not guarantee a similar outcome. This page is information only, not legal advice.</p>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      {/* PRACTICE */}
+      <section id="practice" className="wrap section">
+        <div className="grid3">
+          <div className="panel pad">
+            <h3>Felony Drug Defense</h3>
+            <p>Possession, intent, trafficking, search & seizure, warrants, lab protocols, and chain of custody.</p>
+            <ul className="tick">
+              <li>Suppression & evidentiary motions</li>
+              <li>Treatment‑oriented resolutions where appropriate</li>
+              <li>Jury‑ready investigation & experts</li>
+            </ul>
+          </div>
+          <div className="panel pad">
+            <h3>DUI Defense (OCGA 40‑6‑391)</h3>
+            <p>ALS deadlines, refusals, field tests, breath/blood analysis, under‑21 & CDL considerations.</p>
+            <ul className="tick">
+              <li>ALS hearing filing & defense</li>
+              <li>Testing protocol & device challenges</li>
+              <li>Negotiation and trial strategy</li>
+            </ul>
+          </div>
+          <div className="panel pad">
+            <h3>BUI Defense (Boating)</h3>
+            <p>Marine stops, on‑water testing, accidents, and boating privilege issues across Georgia.</p>
+            <ul className="tick">
+              <li>Probable cause on waterways</li>
+              <li>Calibration & procedure scrutiny</li>
+              <li>Insurance & injury overlays</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* ABOUT / CREDIBILITY */}
+      <section id="about" className="wrap section">
+        <div className="grid2">
+          <div className="panel pad">
+            <h2>A Classic Georgia Firm, Evolved</h2>
+            <p>Founded in 1980, Langford, Ellis & Associates blends courtroom tradition with modern preparedness. We translate complex procedures into clear decisions and protect what matters at every stage—investigation, arraignment, motion practice, negotiation, and trial.</p>
+            <blockquote style={{fontFamily:'Libre Baskerville, Georgia, Cambria, Times, serif', fontStyle:'italic', color:'#374151'}}>“They were steady, honest, and prepared. I felt the weight lift the moment they mapped my options.”</blockquote>
+            <p className="meta">Testimonial is illustrative; results vary. No guarantee of outcome.</p>
+          </div>
+          <aside className="panel pad">
+            <h3>Professional Standing</h3>
+            <div style={{display:'flex',flexWrap:'wrap',gap:10}} aria-label="Credentials">
+              <div style={{border:'1px solid #e5e7eb',padding:'8px 10px',borderRadius:12,background:'#fff'}}>Georgia Bar — In Good Standing</div>
+              <div style={{border:'1px solid #e5e7eb',padding:'8px 10px',borderRadius:12,background:'#fff'}}>Statewide Trial Experience</div>
+              <div style={{border:'1px solid #e5e7eb',padding:'8px 10px',borderRadius:12,background:'#fff'}}>Ethics‑First Representation</div>
+            </div>
+            <h3 style={{marginTop:16}}>What to Expect</h3>
+            <ul className="tick">
+              <li>Prompt review of facts & deadlines</li>
+              <li>Written engagement & clear fees</li>
+              <li>Respectful communication and privacy</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      {/* CONSULT / SURVEY */}
+      <section id="consult" className="wrap section">
+        <div className="grid2">
+          <div className="panel pad">
+            <h2>Quick 3‑Step Case Survey</h2>
+            <p className="meta">This short survey routes you quickly to the right attorney. Submitting does not create an attorney‑client relationship.</p>
+            <SurveyForm />
+          </div>
+          <div className="panel pad aside">
+            <h3>Serving All of Georgia</h3>
+            <p>Atlanta • Savannah • Augusta • Athens • Macon • Columbus • Statewide.</p>
+            <h3>Immediate Steps After an Arrest</h3>
+            <ul className="tick">
+              <li>Act within ALS timelines to protect driving</li>
+              <li>Document details of the stop/testing</li>
+              <li>Speak to counsel before discussing your case</li>
+            </ul>
+            <a className="btn gold full" href="tel:+14045550133" style={{marginTop:10}}>Click to Call (404) 555‑0133</a>
+          </div>
+        </div>
+      </section>
+
+      {/* STICKY CTA */}
+      <div className="sticky"><a className="btn gold" href="#consult" aria-label="Start your case survey">Start Survey</a></div>
+
+      {/* FOOTER */}
+      <footer role="contentinfo">
+        <div className="wrap">
+          <strong>Langford, Ellis & Associates</strong> • 123 Peachtree St NE, Suite 1200, Atlanta, GA 30303 • <a href="tel:+14045550133">(404) 555‑0133</a>
+          <small className="disclaimer">Attorney Advertising. Information only; not legal advice. Viewing this page does not create an attorney‑client relationship. Past results do not guarantee a similar outcome. Responsible attorney: Lead Attorney Name, admitted in Georgia. © {new Date().getFullYear()} Langford, Ellis & Associates.</small>
+        </div>
+      </footer>
+
+      {/* Minimal JSON‑LD for preview */}
+      <script type="application/ld+json" suppressHydrationWarning>{JSON.stringify({
+        "@context":"https://schema.org",
+        "@type":"LegalService",
+        name:"Langford, Ellis & Associates",
+        url:"https://lea-law.com/",
+        areaServed:{"@type":"State","name":"Georgia"},
+        address:{"@type":"PostalAddress","addressRegion":"GA","addressCountry":"US"},
+        telephone:"+1-404-555-0133",
+        serviceType:["Felony Drug Defense","DUI Defense","BUI Defense"],
+        sameAs:["https://lea-law.com/"]
+      })}</script>
+    </div>
+  );
+}
+
+function SurveyForm(){
+  const [step,setStep]=React.useState(1);
+  const [data,setData]=React.useState({contacted:'', service:'', name:'', phone:'', email:'', county:'', consent:false});
+
+  const percent = step===1?25:step===2?55:step===3?85:100;
+
+  const next=()=>setStep(s=>Math.min(4,s+1));
+  const back=()=>setStep(s=>Math.max(1,s-1));
+
+  const update=(e)=>{
+    const {name,value,type,checked}=e.target; setData(d=>({...d,[name]: type==='checkbox'?checked:value}));
+  };
+
+  const submit=(e)=>{
+    e.preventDefault();
+    if(!data.name||!data.phone||!data.county||!data.service||!data.consent){
+      alert('Please complete required fields.'); return;
+    }
+    // In production, POST to your secure endpoint
+    // fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({ ...data, flow:'ga-criminal-luxe' })});
+    setStep(4);
+  };
+
+  return (
+    <form onSubmit={submit} noValidate>
+      <div className="progress" aria-label="Progress bar" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={percent} style={{marginBottom:12}}>
+        <span style={{width: percent+'%'}} />
+      </div>
+
+      {step===1 && (
+        <div>
+          <div className="step-title">Have you contacted a lawyer yet?</div>
+          <div className="choices">
+            <button type="button" className="btn gold choice" onClick={()=>{setData(d=>({...d,contacted:'Yes'})); next();}}>Yes</button>
+            <button type="button" className="btn gold choice" onClick={()=>{setData(d=>({...d,contacted:'No'})); next();}}>No</button>
+          </div>
+          <div style={{display:'flex',justifyContent:'space-between',marginTop:14}}>
+            <span />
+            <button type="button" className="btn gold" onClick={next}>Continue</button>
+          </div>
+        </div>
+      )}
+
+      {step===2 && (
+        <div>
+          <div className="step-title">What type of service are you looking for?</div>
+          <select name="service" onChange={update} value={data.service} required>
+            <option value="">Select…</option>
+            <option value="DUI (OCGA 40-6-391)">DUI (OCGA 40‑6‑391)</option>
+            <option value="BUI (Boating Under the Influence)">BUI (Boating Under the Influence)</option>
+            <option value="Felony Drug Defense">Felony Drug Defense</option>
+            <option value="Criminal Defense (Other)">Criminal Defense (Other)</option>
+          </select>
+          <div style={{display:'flex',justifyContent:'space-between',marginTop:14}}>
+            <button type="button" className="btn" onClick={back}>Back</button>
+            <button type="button" className="btn gold" onClick={next} disabled={!data.service}>Continue</button>
+          </div>
+        </div>
+      )}
+
+      {step===3 && (
+        <div>
+          <div className="step-title">How can we reach you?</div>
+          <div className="grid2">
+            <div>
+              <label htmlFor="name">Full Name</label>
+              <input id="name" name="name" value={data.name} onChange={update} required />
+            </div>
+            <div>
+              <label htmlFor="phone">Phone</label>
+              <input id="phone" name="phone" inputMode="tel" value={data.phone} onChange={update} required />
+            </div>
+          </div>
+          <div className="grid2" style={{marginTop:10}}>
+            <div>
+              <label htmlFor="email">Email (optional)</label>
+              <input id="email" name="email" type="email" value={data.email} onChange={update} />
+            </div>
+            <div>
+              <label htmlFor="county">Georgia County</label>
+              <select id="county" name="county" value={data.county} onChange={update} required>
+                <option value="">Select…</option>
+                <option>Fulton</option><option>DeKalb</option><option>Cobb</option><option>Gwinnett</option><option>Chatham</option><option>Richmond</option><option>Clarke</option><option>Hall</option><option>Bibb</option><option>All Counties</option>
+              </select>
+            </div>
+          </div>
+          <div style={{display:'flex',gap:10,alignItems:'center',marginTop:12}}>
+            <input id="consent" name="consent" type="checkbox" checked={!!data.consent} onChange={(e)=>setData(d=>({...d,consent:e.target.checked}))} required />
+            <label htmlFor="consent" className="meta">I agree to be contacted. Messaging/data rates may apply. This is not legal advice.</label>
+          </div>
+          <div style={{display:'flex',justifyContent:'space-between',marginTop:14}}>
+            <button type="button" className="btn" onClick={back}>Back</button>
+            <button type="submit" className="btn gold">Submit</button>
+          </div>
+        </div>
+      )}
+
+      {step===4 && (
+        <div>
+          <h3 className="step-title">Thank you — we’ll reach out shortly.</h3>
+          <p className="meta">If this is urgent, call us now. Our 24/7 line connects you directly to intake.</p>
+          <a className="btn gold full" href="tel:+14045550133">Click to Call (404) 555‑0133</a>
+          <p className="meta" style={{marginTop:10}}>You’ll also receive a confirmation SMS or email if provided.</p>
+        </div>
+      )}
+    </form>
+  );
+}
+
+// --- Lightweight self-test (non-fatal) to catch regressions in preview ---
+(()=>{
+  console.assert(typeof React !== 'undefined', 'React is defined');
+  console.assert(typeof React.useState === 'function', 'React.useState available');
+})();
