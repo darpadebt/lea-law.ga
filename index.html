@@ -32,7 +32,11 @@
     .wrap{max-width:1100px;margin:0 auto;padding:0 18px}
     .nav{display:flex;align-items:center;justify-content:space-between;height:72px;color:#e5e7eb}
     .crest{display:flex;align-items:center;gap:12px}
-    .brand{display:block;height:52px;width:auto;filter:drop-shadow(0 4px 18px rgba(0,0,0,.18))}
+    .site-logo{display:flex;align-items:center;justify-content:center;padding:4px 0}
+    .site-logo img{display:block;max-width:220px;width:100%;height:auto;filter:drop-shadow(0 4px 18px rgba(0,0,0,.18))}
+    @media (max-width:600px){
+      .site-logo img{max-width:190px}
+    }
     .toplinks a{color:#e5e7eb;margin-left:18px}
     .toplinks a:hover{color:#fef3c7}
     .btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 16px;border-radius:14px;border:1px solid #e4e4e7;cursor:pointer;font-weight:800;user-select:none}
@@ -101,7 +105,16 @@ $1/* removed custom checkmark for reliability on all devices */
   <header>
     <div class="wrap nav" aria-label="Main navigation">
       <div class="crest" aria-label="Firm branding">
-        <img class="brand" src="assets/logos/austin-law-script.svg" width="205" height="80" alt="Austin Law Group, P.C." loading="lazy" />
+        <a href="https://lea-law.com/" class="site-logo" title="Austin Law Group, PC">
+          <img
+            src="https://lea-law.com/wp-content/uploads/2020/09/austin_law_group_logo.png"
+            alt="Austin Law Group, PC Logo"
+            width="200"
+            height="60"
+            loading="lazy"
+          />
+        </a>
+      </div>
       </div>
       <div class="toplinks">
         <a href="#practice">Practice</a>
